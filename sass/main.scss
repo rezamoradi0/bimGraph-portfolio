@@ -1,0 +1,119 @@
+@import "variable", "color", "font", "fontSize", "component";
+
+$allColumn:10;
+$allRow:10;
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+
+}
+
+body {
+    min-height: 100vh;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat($allColumn, 1fr);
+    gap: $_VarMainGap;
+    grid-template-rows: repeat($allRow, 1fr);
+    border: 1px solid red;
+    min-height: 80vh;
+    margin: auto 40px;
+    margin-top: 10vh;
+}
+
+section {
+    border: 1px solid black;
+}
+
+.main-info-section {
+    @include SetMyClomn(1, 6);
+    @include SetMyRow(1, 7);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+
+    &>h1 {
+        @include SetMyClomn(1, 4);
+        @include SetMyRow(1, 4);
+        position: relative;
+
+        &>span:last-of-type {
+            border: 1px solid red;
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+
+        }
+    }
+
+    @for $i from 1 through 3 {
+        .info-card-#{$i} {
+            @include SetMyClomn($i, ($i + 1));
+            @include SetMyRow(4, 6);
+            border: 1px solid blue;
+        }
+
+    }
+}
+
+.bio-section {
+    @include SetMyClomn(6, 11);
+    @include SetMyRow(1, 7);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+
+    &>nav {
+        @include SetMyClomn(1, 11);
+        @include SetMyRow(1, 2);
+    }
+
+    .bio-img {
+        @include SetMyClomn(1, 5);
+        @include SetMyRow(2, 7);
+    }
+
+    .bio-based,
+    .bio-name,
+    .bio-social-list {
+        @include SetMyClomn(6, 11);
+    }
+
+    .bio-name {
+        @include SetMyRow(2, 3);
+    }
+
+    .bio-based {
+        @include SetMyRow(3, 6);
+    }
+
+    .bio-social-list {
+        @include SetMyRow(6, 7);
+    }
+
+}
+
+.project-section {
+    @include SetMyClomn(1, 7);
+    @include SetMyRow(7, 11);
+ 
+}
+
+.about-section {
+    @include SetMyClomn(7, 11);
+    @include SetMyRow(7, 11);
+}
+.project-section,.about-section{
+    display: flex;
+    flex-direction: column;
+    .line-1{
+        height: 20%;
+    }
+    .line-2{
+        height: 80%;
+    }
+}

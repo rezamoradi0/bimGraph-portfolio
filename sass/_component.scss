@@ -1,0 +1,11 @@
+//@import "main";
+@use "sass:string";
+
+@mixin SetMyClomn($_colStart, $_colEnd) {
+    grid-column: string.unquote(($_colStart +" / "+ $_colEnd));
+}
+
+@mixin SetMyRow($_rowStart, $_rowEnd) {
+    grid-row: string.unquote(($_rowStart +" / "+ $_rowEnd));
+
+}
