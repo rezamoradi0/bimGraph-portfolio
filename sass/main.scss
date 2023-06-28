@@ -7,11 +7,14 @@ $allRow:10;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
-
+    color: $_ColorMainText;
+    font-family: novaSans;
 }
 
 body {
     min-height: 100vh;
+    overflow: hidden;
+    background-color: $_ColorMainBg;
 }
 
 .main {
@@ -19,10 +22,18 @@ body {
     grid-template-columns: repeat($allColumn, 1fr);
     gap: $_VarMainGap;
     grid-template-rows: repeat($allRow, 1fr);
-    border: 1px solid red;
-    min-height: 80vh;
-    margin: auto 40px;
-    margin-top: 10vh;
+    //border: 1px solid red;
+    max-height: 85vh;
+    aspect-ratio: 13/9;
+    margin: auto;
+    margin-top: 7vh;
+    padding: $_VarMainPadding;
+    &>*{
+        padding: $_VarMainPadding;
+        background-color: transparent;
+        border-radius: $_VarMainBorderRadius;
+      
+    }
 }
 
 section {
@@ -35,28 +46,74 @@ section {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
-
+    column-gap: 20px;
+    row-gap: 15px;
+    padding: 0px;
     &>h1 {
         @include SetMyClomn(1, 4);
         @include SetMyRow(1, 4);
         position: relative;
-
-        &>span:last-of-type {
-            border: 1px solid red;
+        background-color: $_ColorCardBg;
+        border-radius: $_VarMainBorderRadius;
+        padding: $_VarMainPadding;
+        font-size: $_FontSizeSubject;
+       
+        .hire-me {
+           // border: 1px solid red;
             position: absolute;
-            right: 10px;
-            bottom: 10px;
-
+            font-size: $_FontSizeHireMe;
+            background-color: $_ColorPrimryPurpul;
+            text-transform: capitalize;
+            right: 20px;
+            bottom:30px;
+            border-radius: 24px;
+            padding: 7px 25px;
         }
     }
 
-    @for $i from 1 through 3 {
-        .info-card-#{$i} {
-            @include SetMyClomn($i, ($i + 1));
-            @include SetMyRow(4, 6);
-            border: 1px solid blue;
-        }
+    // @for $i from 1 through 3 {
+    //     .info-card-#{$i} {
+    //         @include SetMyClomn($i, ($i + 1));
+    //         @include SetMyRow(4, 6);
+    //         border: 1px solid blue;
+    //         display: flex;
+    //         justify-content: center;
+    //         align-items: center;
+    //     }
 
+    // }
+    $cardInfo:(1:$_ColorPrimryGreen,2:$_ColorPrimryYellow,3:$_ColorPrimryRed);
+    @each $item,$color in $cardInfo{
+        .info-card-#{$item} {
+            @include SetMyClomn($item, ($item + 1));
+            @include SetMyRow(4, 6);
+         
+           background-color: $color;
+            
+        }
+    }
+    .info-card{
+       
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: $_VarMainBorderRadius;
+    }
+    .counter{
+        position: relative;
+        width: 100%;
+        text-align: center;
+        font-size: $_FontSizeCardConter;
+        letter-spacing: 4px;
+      .counter-text{
+        letter-spacing: 1px;
+        width: 100%;
+        position: absolute;
+        bottom: -10px;
+        text-align: center;
+        font-size: 10px;
+        left: 0px;
+      }
     }
 }
 
@@ -66,14 +123,21 @@ section {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(6, 1fr);
+    gap: 10px 5px;
+    padding: 0px;
+    &>*{
+        background-color: $_ColorCardBg;
+        border-radius: $_VarMainBorderRadius;
 
+    }
     &>nav {
         @include SetMyClomn(1, 11);
         @include SetMyRow(1, 2);
+        padding: 5px 10px;
     }
 
     .bio-img {
-        @include SetMyClomn(1, 5);
+        @include SetMyClomn(1, 6);
         @include SetMyRow(2, 7);
     }
 
@@ -81,6 +145,7 @@ section {
     .bio-name,
     .bio-social-list {
         @include SetMyClomn(6, 11);
+        padding: 5px 10px;
     }
 
     .bio-name {
@@ -110,10 +175,89 @@ section {
 .project-section,.about-section{
     display: flex;
     flex-direction: column;
+    background-color: $_ColorCardBg;
     .line-1{
+        &>*{
+            text-transform: capitalize;
+        }
+       font-size: $_FontSizeSectionHeader;
         height: 20%;
+        display: flex;
+        justify-content: space-between;
     }
     .line-2{
         height: 80%;
+        line-height: 24px;
+        overflow: hidden;
     }
+}
+
+.images-row{
+    display: flex;
+    justify-content: space-between;
+    img{
+      
+        width: 32%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: $_VarMainBorderRadius;
+        object-position: bottom;
+    }
+}
+
+.dark-text{
+    color: $_ColorDarkText;
+}
+.bio-img{
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        border-radius: $_VarMainBorderRadius;
+    }
+}
+.line-space-between{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &>span{
+        text-transform: capitalize;
+    }
+
+}
+.bio-based .based-in{
+    width: 100%;
+    height: 80%;
+    padding-top: 20px;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.bio-social-list{
+    display: flex;
+    justify-content: space-evenly;
+    &>.social-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        aspect-ratio: 1/1;
+        padding: 5px;
+        border-radius: 50%;
+        background-color: lighten($_ColorCardBg,10);
+        &.selected{
+            background-color: $_ColorPrimryBlue;
+        }
+    }
+}
+.black-text{
+    *{
+    color: black;
+    }
+}
+.bold-text{
+    font-weight: bold;
 }

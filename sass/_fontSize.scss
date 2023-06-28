@@ -3,7 +3,7 @@ $_FontSizeDefult:14px;
 $_FontSizeSectionHeader:24px;
 
 //MainIfno Section
-$_FontSizeSubject:3rem;
+$_FontSizeSubject:2rem;
 $_FontSizeHeader:15px;
 
 
@@ -11,7 +11,7 @@ $_FontSizeHeader:15px;
     $_FontSizeCardConter:$_FontSizeSubject;
     $_FontSizeCardInfo:12px;
 
-    $_FontSizeHireMe:$_FontSizeDefult;
+    $_FontSizeHireMe:$_FontSizeDefult + 2px;
 
 //Project Section
 $_FontSizeREADMore:15px;
