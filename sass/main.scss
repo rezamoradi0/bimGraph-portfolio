@@ -57,10 +57,11 @@ section {
         border-radius: $_VarMainBorderRadius;
         padding: $_VarMainPadding;
         font-size: $_FontSizeSubject;
-       
+      
         .hire-me {
            // border: 1px solid red;
             position: absolute;
+         
             font-size: $_FontSizeHireMe;
             background-color: $_ColorPrimryPurpul;
             text-transform: capitalize;
