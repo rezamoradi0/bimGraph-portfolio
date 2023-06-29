@@ -29,6 +29,9 @@ body {
   margin-top: 7vh;
   padding: 20px;
 }
+.main a {
+  text-decoration: none;
+}
 .main > * {
   padding: 20px;
   background-color: transparent;
@@ -61,6 +64,7 @@ section {
 }
 .main-info-section > h1 .hire-me {
   position: absolute;
+  cursor: pointer;
   font-size: 16px;
   background-color: #8325fd;
   text-transform: capitalize;
@@ -155,21 +159,25 @@ section {
   grid-row: 7 / 11;
 }
 
-.project-section, .about-section {
+.project-section,
+.about-section {
   display: flex;
   flex-direction: column;
   background-color: #1e1e1e;
 }
-.project-section .line-1, .about-section .line-1 {
+.project-section .line-1,
+.about-section .line-1 {
   font-size: 24px;
   height: 20%;
   display: flex;
   justify-content: space-between;
 }
-.project-section .line-1 > *, .about-section .line-1 > * {
+.project-section .line-1 > *,
+.about-section .line-1 > * {
   text-transform: capitalize;
 }
-.project-section .line-2, .about-section .line-2 {
+.project-section .line-2,
+.about-section .line-2 {
   height: 80%;
   line-height: 24px;
   overflow: hidden;
@@ -179,14 +187,24 @@ section {
   display: flex;
   justify-content: space-between;
 }
-.images-row img {
+.images-row span {
+  overflow: hidden;
   width: 32%;
   aspect-ratio: 1/1;
-  -o-object-fit: cover;
-     object-fit: cover;
   border-radius: 12px;
+}
+.images-row span:hover img {
+  transform: translateY(-10%);
+}
+.images-row span img {
+  width: 110%;
+  height: 110%;
+  aspect-ratio: 1/1;
   -o-object-position: bottom;
      object-position: bottom;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: all 500ms;
 }
 
 .dark-text {
@@ -232,10 +250,12 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 400ms;
   aspect-ratio: 1/1;
   padding: 5px;
   border-radius: 50%;
   background-color: #383838;
+  cursor: pointer;
 }
 .bio-social-list > .social-icon.selected {
   background-color: #2868b2;
@@ -247,4 +267,20 @@ section {
 
 .bold-text {
   font-weight: bold;
+}
+
+.linkedin:hover {
+  background-color: #2868b2;
+}
+
+.telegram:hover {
+  background-color: #3a81d3;
+}
+
+.twitter:hover {
+  background-color: #649cdc;
+}
+
+.instagram:hover {
+  background-color: #fe6d79;
 }/*# sourceMappingURL=main.css.map */

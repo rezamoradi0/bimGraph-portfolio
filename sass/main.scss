@@ -28,11 +28,14 @@ body {
     margin: auto;
     margin-top: 7vh;
     padding: $_VarMainPadding;
-    &>*{
+    a{
+        text-decoration: none;
+    }
+    &>* {
         padding: $_VarMainPadding;
         background-color: transparent;
         border-radius: $_VarMainBorderRadius;
-      
+
     }
 }
 
@@ -49,6 +52,7 @@ section {
     column-gap: 20px;
     row-gap: 15px;
     padding: 0px;
+
     &>h1 {
         @include SetMyClomn(1, 4);
         @include SetMyRow(1, 4);
@@ -57,16 +61,16 @@ section {
         border-radius: $_VarMainBorderRadius;
         padding: $_VarMainPadding;
         font-size: $_FontSizeSubject;
-      
+
         .hire-me {
-           // border: 1px solid red;
+            // border: 1px solid red;
             position: absolute;
-         
+            cursor: pointer;
             font-size: $_FontSizeHireMe;
             background-color: $_ColorPrimryPurpul;
             text-transform: capitalize;
             right: 20px;
-            bottom:30px;
+            bottom: 30px;
             border-radius: 24px;
             padding: 7px 25px;
         }
@@ -83,38 +87,43 @@ section {
     //     }
 
     // }
-    $cardInfo:(1:$_ColorPrimryGreen,2:$_ColorPrimryYellow,3:$_ColorPrimryRed);
-    @each $item,$color in $cardInfo{
+    $cardInfo:(1:$_ColorPrimryGreen, 2:$_ColorPrimryYellow, 3:$_ColorPrimryRed);
+
+    @each $item,
+    $color in $cardInfo {
         .info-card-#{$item} {
             @include SetMyClomn($item, ($item + 1));
             @include SetMyRow(4, 6);
-         
-           background-color: $color;
-            
+
+            background-color: $color;
+
         }
     }
-    .info-card{
-       
+
+    .info-card {
+
         display: flex;
         justify-content: center;
         align-items: center;
         border-radius: $_VarMainBorderRadius;
     }
-    .counter{
+
+    .counter {
         position: relative;
         width: 100%;
         text-align: center;
         font-size: $_FontSizeCardConter;
         letter-spacing: 4px;
-      .counter-text{
-        letter-spacing: 1px;
-        width: 100%;
-        position: absolute;
-        bottom: -10px;
-        text-align: center;
-        font-size: 10px;
-        left: 0px;
-      }
+
+        .counter-text {
+            letter-spacing: 1px;
+            width: 100%;
+            position: absolute;
+            bottom: -10px;
+            text-align: center;
+            font-size: 10px;
+            left: 0px;
+        }
     }
 }
 
@@ -126,11 +135,13 @@ section {
     grid-template-rows: repeat(6, 1fr);
     gap: 10px 5px;
     padding: 0px;
-    &>*{
+
+    &>* {
         background-color: $_ColorCardBg;
         border-radius: $_VarMainBorderRadius;
 
     }
+
     &>nav {
         @include SetMyClomn(1, 11);
         @include SetMyRow(1, 2);
@@ -166,51 +177,70 @@ section {
 .project-section {
     @include SetMyClomn(1, 7);
     @include SetMyRow(7, 11);
- 
+
 }
 
 .about-section {
     @include SetMyClomn(7, 11);
     @include SetMyRow(7, 11);
 }
-.project-section,.about-section{
+
+.project-section,
+.about-section {
     display: flex;
     flex-direction: column;
     background-color: $_ColorCardBg;
-    .line-1{
-        &>*{
+
+    .line-1 {
+        &>* {
             text-transform: capitalize;
         }
-       font-size: $_FontSizeSectionHeader;
+
+        font-size: $_FontSizeSectionHeader;
         height: 20%;
         display: flex;
         justify-content: space-between;
     }
-    .line-2{
+
+    .line-2 {
         height: 80%;
         line-height: 24px;
         overflow: hidden;
     }
 }
 
-.images-row{
+.images-row {
     display: flex;
     justify-content: space-between;
-    img{
-      
+    span{
+        overflow: hidden;
         width: 32%;
         aspect-ratio: 1/1;
-        object-fit: cover;
         border-radius: $_VarMainBorderRadius;
-        object-position: bottom;
+        &:hover img{
+          
+            transform: translateY(-10%);
+        }
+        img {
+            width: 110%;
+            height: 110%;
+            aspect-ratio: 1/1;
+            object-position: bottom;
+            object-fit: cover;
+            transition: all 500ms;
+         
+        }
     }
+ 
 }
 
-.dark-text{
+.dark-text {
     color: $_ColorDarkText;
+   
 }
-.bio-img{
-    img{
+
+.bio-img {
+    img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -218,47 +248,67 @@ section {
         border-radius: $_VarMainBorderRadius;
     }
 }
-.line-space-between{
+
+.line-space-between {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    &>span{
+
+    &>span {
         text-transform: capitalize;
     }
 
 }
-.bio-based .based-in{
+
+.bio-based .based-in {
     width: 100%;
     height: 80%;
     padding-top: 20px;
-    img{
+
+    img {
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
 }
 
-.bio-social-list{
+.bio-social-list {
     display: flex;
     justify-content: space-evenly;
-    &>.social-icon{
+
+    &>.social-icon {
         display: flex;
         justify-content: center;
         align-items: center;
+        transition: all 400ms;
         aspect-ratio: 1/1;
         padding: 5px;
         border-radius: 50%;
-        background-color: lighten($_ColorCardBg,10);
-        &.selected{
+        background-color: lighten($_ColorCardBg, 10);
+        cursor: pointer;
+
+        &.selected {
             background-color: $_ColorPrimryBlue;
         }
     }
 }
-.black-text{
-    *{
-    color: black;
+
+.black-text {
+    * {
+        color: black;
     }
 }
-.bold-text{
+
+.bold-text {
     font-weight: bold;
 }
+
+$listSocial:("linkedin":$_ColorPrimryBlue, "telegram":lighten($_ColorPrimryBlue, 10), "twitter":lighten($_ColorPrimryBlue, 20),
+    "instagram":$_ColorPrimryRed);
+    @each $socialNetwork,$color in $listSocial {
+        .#{$socialNetwork}{
+            &:hover{
+                background-color: $color;
+            }
+        }
+    }
